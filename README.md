@@ -1,4 +1,4 @@
-# amigo-oculto-app
+# AMIGO OCULTO (APP)
 Aplicativo para Amigo Oculto.
 
 ## React Native project
