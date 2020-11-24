@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
     },
     quadroAmigos: {
         width: '100%',
-        maxHeight: 500,
+        maxHeight: 420,
     },
     nomeBtn: {
         width: '95%',
@@ -95,6 +95,24 @@ const styles = StyleSheet.create({
     nomeTextBtn: {
         color: "#fff",
         fontSize: 15
+    },
+    Footer: {
+        position: 'absolute',
+        bottom: 0,
+        backgroundColor: "rgba(0, 0, 0, 0.5)",
+        width: Dimensions.get('screen').width,
+        paddingVertical: 10,
+        alignItems: 'center',
+    },
+    FooterText: {
+        color: '#999',
+        alignSelf: 'center'
+    },
+    FooterLink: {
+        color: '#FFF',
+        fontWeight: 'bold',
+        alignSelf: 'center',
+        textDecorationLine: 'underline'
     }
 });
 
