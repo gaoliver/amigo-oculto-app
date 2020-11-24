@@ -1,4 +1,4 @@
-import React, { Component, useState } from "react";
+import React, { Component } from "react";
 import {
   Text,
   View,
@@ -26,6 +26,28 @@ export default class Game extends Component {
     nomeInput: "",
   };
 
+  restart() {
+    this.setState({
+      altura: 0,
+      bordasV: 0,
+      bordasH: 0,
+      texto: "Iniciar",
+
+      participantes: [],
+      quadro: [],
+      tirados: [],
+      y: 0,
+      quadro: [],
+
+      nomeInput: "",
+    });
+
+    Alert.alert(
+      "Reiniciar",
+      "Você acaba de reiniciar o jogo. Todas as informações foram zeradas. Por favor, comece novamente."
+    );
+  }
+
   submit() {
     this.state.participantes.push(this.state.nomeInput);
     this.state.quadro.push(this.state.nomeInput);
@@ -38,26 +60,49 @@ export default class Game extends Component {
     if (this.state.quadro.includes(nome)) {
       var x = Math.floor(Math.random() * this.state.participantes.length);
 
-      while (this.state.participantes[x] == nome) {
-        var x = Math.floor(Math.random() * this.state.participantes.length);
+      if (this.state.participantes[x] == nome) {
+        while (this.state.participantes[x] == nome) {
+          var x = Math.floor(Math.random() * this.state.participantes.length);
 
-        if (this.state.quadro.values() == nome) {
+          if (this.state.quadro == nome) {
+            break;
+          }
+        }
+
+        if (this.state.quadro == nome) {
           Alert.alert(
             "Atenção",
-            "Coincidentemente, só sobrou você para ser tirado. Recomecem o jogo."
+            "Coincidentemente, só sobrou você para ser tirado. Recomecem o jogo.",
+            [
+                {
+                    text: "Reiniciar",
+                    onPress: () => this.restart(),
+                }
+            ],
+            {cancelable: false}
           );
+        } else {
+          const participante = this.state.participantes[x];
 
-          break;
+          this.state.tirados.push(participante);
+          Alert.alert("Atenção, " + nome, "Você tirou " + participante);
+          this.state.participantes.splice(
+            this.state.participantes.indexOf(participante),
+            1
+          );
+          this.state.quadro.splice(this.state.quadro.indexOf(nome), 1);
         }
-      }
+      } else {
+        const participante = this.state.participantes[x];
 
-      this.state.tirados.push(this.state.participantes[x]);
-      Alert.alert(
-        "Atenção, " + nome,
-        "Você tirou " + this.state.participantes[x]
-      );
-      this.state.quadro.splice(this.state.quadro.indexOf(nome), 1);
-      this.state.participantes.splice(this.state.participantes[x], 1);
+        this.state.tirados.push(this.state.participantes[x]);
+        Alert.alert("Atenção, " + nome, "Você tirou " + participante);
+        this.state.participantes.splice(
+          this.state.participantes.indexOf(participante),
+          1
+        );
+        this.state.quadro.splice(this.state.quadro.indexOf(nome), 1);
+      }
     } else {
       Alert.alert("Atenção", "Esse nome já jogou.");
     }
@@ -72,12 +117,7 @@ export default class Game extends Component {
         texto: "Fechar",
       });
     } else {
-      this.setState({ altura: 0, bordasV: 0, bordasH: 0, texto: "Iniciar" });
-
-      Alert.alert(
-        "Reiniciar",
-        "Você acaba de reiniciar o jogo. Todas as informações foram zeradas. Por favor, comece novamente."
-      );
+      this.restart();
     }
   };
 
