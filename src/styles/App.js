@@ -16,14 +16,19 @@ const styles = StyleSheet.create({
         fontWeight: 'bold'
     },
     Slogan: {
-        color: '#DEB887',
-        fontSize: 20,
+        color: '#FFF8DC',
+        fontSize: 25,
         fontWeight: 'bold'
     },
+    // Slogan: {
+    //     color: '#DEB887',
+    //     fontSize: 20,
+    //     fontWeight: 'bold'
+    // },
     BotaoWide: {
         width: 200,
         height: 40,
-        backgroundColor: '#f5f5f5',
+        backgroundColor: '#FFF8DC',
         alignItems: 'center',
         justifyContent: 'center',
         marginTop: 20
@@ -35,6 +40,11 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         marginTop: 20,
     },
+    botaoText: {
+        fontSize: 15,
+        color: '#A52F2A',
+        fontWeight: 'bold'
+    },
     Jogo: {
         overflow: 'hidden',
         backgroundColor: '#B8871F',
@@ -43,6 +53,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 5,
         paddingVertical: 10,
         alignItems: 'center',
+        borderRadius: 10
     },
     jogoHeader: {
         flexDirection: 'row',

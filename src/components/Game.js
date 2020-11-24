@@ -160,7 +160,7 @@ export default class Game extends Component {
     return (
       <View style={styles.Container}>
         <TouchableOpacity style={styles.BotaoWide} onPress={this.alternar}>
-          <Text> {this.state.texto} </Text>
+          <Text style={styles.botaoText}> {this.state.texto} </Text>
         </TouchableOpacity>
 
         <View
