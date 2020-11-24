@@ -63,6 +63,23 @@ export default class Game extends Component {
     }
   }
 
+  confirm(nome) {
+    Alert.alert(
+      "Confirmação",
+      "Você é " + nome + "?",
+      [
+        {
+          text: "não",
+        },
+        {
+          text: "sim",
+          onPress: () => this.tirarNome(nome),
+        },
+      ],
+      { cancelable: true }
+    );
+  }
+
   tirarNome(nome) {
     if (this.state.quadro.includes(nome)) {
       var x = Math.floor(Math.random() * this.state.participantes.length);
@@ -98,7 +115,7 @@ export default class Game extends Component {
             1
           );
           this.state.quadro.splice(this.state.quadro.indexOf(nome), 1);
-          this.setState({ y: -1 })
+          this.setState({ y: -1 });
         }
       } else {
         const participante = this.state.participantes[x];
@@ -110,7 +127,7 @@ export default class Game extends Component {
           1
         );
         this.state.quadro.splice(this.state.quadro.indexOf(nome), 1);
-        this.setState({ y: -1 })
+        this.setState({ y: -1 });
       }
     } else {
       Alert.alert("Atenção", "Esse nome já jogou.");
@@ -143,7 +160,7 @@ export default class Game extends Component {
     return (
       <View style={styles.Container}>
         <TouchableOpacity style={styles.BotaoWide} onPress={this.alternar}>
-          <Text> {this.state.texto} </Text>
+          <Text style={styles.botaoText}> {this.state.texto} </Text>
         </TouchableOpacity>
 
         <View
@@ -194,7 +211,7 @@ export default class Game extends Component {
               <TouchableOpacity
                 style={styles.nomeBtn}
                 key={nome}
-                onPress={() => this.tirarNome(nome)}
+                onPress={() => this.confirm(nome)}
               >
                 <Text style={styles.nomeTextBtn}>{nome}</Text>
               </TouchableOpacity>
