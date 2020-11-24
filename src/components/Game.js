@@ -48,12 +48,19 @@ export default class Game extends Component {
     );
   }
 
-  submit() {
-    this.state.participantes.push(this.state.nomeInput);
-    this.state.quadro.push(this.state.nomeInput);
-    this.textInput.clear();
+  submit(nome) {
+    if (this.state.participantes.includes(nome)) {
+      Alert.alert(
+        "Nome em uso",
+        "Este nome já está sendo utilizado. Tente outro nome, ou utilize sobrenomes."
+      );
+    } else {
+      this.state.participantes.push(this.state.nomeInput);
+      this.state.quadro.push(this.state.nomeInput);
+      this.textInput.clear();
 
-    this.setState({ y: +1 });
+      this.setState({ y: +1 });
+    }
   }
 
   tirarNome(nome) {
@@ -74,34 +81,36 @@ export default class Game extends Component {
             "Atenção",
             "Coincidentemente, só sobrou você para ser tirado. Recomecem o jogo.",
             [
-                {
-                    text: "Reiniciar",
-                    onPress: () => this.restart(),
-                }
+              {
+                text: "Reiniciar",
+                onPress: () => this.restart(),
+              },
             ],
-            {cancelable: false}
+            { cancelable: false }
           );
         } else {
           const participante = this.state.participantes[x];
 
           this.state.tirados.push(participante);
-          Alert.alert("Atenção, " + nome, "Você tirou " + participante);
+          Alert.alert(nome, "Você tirou " + participante);
           this.state.participantes.splice(
             this.state.participantes.indexOf(participante),
             1
           );
           this.state.quadro.splice(this.state.quadro.indexOf(nome), 1);
+          this.setState({ y: -1 })
         }
       } else {
         const participante = this.state.participantes[x];
 
         this.state.tirados.push(this.state.participantes[x]);
-        Alert.alert("Atenção, " + nome, "Você tirou " + participante);
+        Alert.alert(nome, "Você tirou " + participante);
         this.state.participantes.splice(
           this.state.participantes.indexOf(participante),
           1
         );
         this.state.quadro.splice(this.state.quadro.indexOf(nome), 1);
+        this.setState({ y: -1 })
       }
     } else {
       Alert.alert("Atenção", "Esse nome já jogou.");
@@ -162,7 +171,7 @@ export default class Game extends Component {
             <TouchableOpacity
               style={styles.OkButton}
               onPress={() => {
-                this.submit();
+                this.submit(this.state.nomeInput);
               }}
             >
               <Text>Ok</Text>
@@ -192,7 +201,7 @@ export default class Game extends Component {
             ))}
           </ScrollView>
 
-          <Button
+          {/* <Button
             title="Ver lista"
             onPress={() =>
               Alert.alert(
@@ -205,7 +214,7 @@ export default class Game extends Component {
                   this.state.tirados
               )
             }
-          />
+          /> */}
         </View>
       </View>
     );
