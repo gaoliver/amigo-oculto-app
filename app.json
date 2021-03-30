@@ -17,16 +17,15 @@
             "**/*"
         ],
         "ios": {
-            "supportsTablet": true
+            "supportsTablet": true,
+            "bundleIdentifier": "com.gabrielramos.amigo-oculto"
         },
         "android": {
+            "package": "com.gabrielramos.amigo_oculto",
             "adaptiveIcon": {
                 "foregroundImage": "./assets/adaptive-icon.png",
-                "backgroundColor": "#FFFFFF"
+                "backgroundColor": "#a52f2a"
             }
-        },
-        "web": {
-            "favicon": "./assets/favicon.png"
         },
         "description": "Aplicativo para brincadeira de Amigo Oculto.",
         "githubUrl": "https://github.com/gaoliver/amigo-oculto-app.git"
