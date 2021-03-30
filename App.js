@@ -8,9 +8,9 @@ import {
   Text,
   Linking
 } from "react-native";
-import styles from "./styles/App";
-import Header from "./components/Header";
-import Game from "./components/Game";
+import styles from "./src/styles/App";
+import Header from "./src/components/Header";
+import Game from "./src/components/Game";
 
 export default function App() {
   return (
@@ -22,11 +22,11 @@ export default function App() {
           <Game />
           <View style={styles.Footer}>
             <View style={{flexDirection: 'row'}}>
-              <Text style={styles.FooterText}>Criado por  </Text>
+              <Text>by</Text>
               <Text
                style={styles.FooterLink}
                onPress={() => Linking.openURL('https://instagram.com/eugaoliver')}
-               >GABRIEL RAMOS</Text>
+               >@eugaoliver</Text>
             </View>
           </View>
         </SafeAreaView>

@@ -99,9 +99,9 @@ const styles = StyleSheet.create({
     Footer: {
         position: 'absolute',
         bottom: 0,
-        backgroundColor: "rgba(0, 0, 0, 0.5)",
+        backgroundColor: "#fff3",
         width: Dimensions.get('screen').width,
-        paddingVertical: 10,
+        paddingVertical: 5,
         alignItems: 'center',
     },
     FooterText: {
@@ -112,7 +112,8 @@ const styles = StyleSheet.create({
         color: '#FFF',
         fontWeight: 'bold',
         alignSelf: 'center',
-        textDecorationLine: 'underline'
+        textDecorationLine: 'underline',
+        marginLeft: 5
     }
 });
 
